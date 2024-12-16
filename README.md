@@ -13,7 +13,9 @@ A fun and interactive quiz game built with Django. This application allows users
 - Restart the quiz with a single click.
 
 ## Demo Screenshot
-![Quiz Summary Screenshot](https://github.com/mehtadigisha/Quiz_Game/blob/main/quiz1.png,[link-to-your-screenshot](https://github.com/mehtadigisha/Quiz_Game/blob/main/quiz2.png))
+![Quiz Summary Screenshot]![quiz1](https://github.com/user-attachments/assets/1834da4e-f93a-4798-8d0d-1dfa622a9b33)
+![quiz2](https://github.com/user-attachments/assets/047df151-6805-4f07-8f3c-e31a2bc16de2)
+
 
 ## Tech Stack
 - **Backend**: Django Framework (Python)
