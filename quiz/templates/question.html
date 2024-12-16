@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% block title %}Quiz Game{% endblock %}
+{% block content %}
+<div class="container py-5">
+    <div class="quiz-container text-center bg-light rounded shadow p-4">
+        <h1 class="mb-4" style="color: #00047e; font-family: 'Arial', sans-serif;font-size: 30px;">Quiz Time!</h1>
+        <form method="POST" action="{% url 'submit_answer' %}">
+            {% csrf_token %}
+            <h4 class="question-text mb-4" style="font-size: 1.5rem; color: #333; font-family: 'Verdana', sans-serif;">
+                {{ question.text }}
+            </h4>
+            
+            <input type="hidden" name="question_id" value="{{ question.id }}">
+            
+            <!-- Option A -->
+            <div class="form-check mb-3">
+                <input type="radio" class="form-check-input" id="optionA" name="selected_option" value="A" required>
+                <label class="form-check-label" for="optionA" style="font-size: 1.2rem;">
+                    {{ question.option_a }}
+                </label>
+            </div>
+            
+            <!-- Option B -->
+            <div class="form-check mb-3">
+                <input type="radio" class="form-check-input" id="optionB" name="selected_option" value="B">
+                <label class="form-check-label" for="optionB" style="font-size: 1.2rem;">
+                    {{ question.option_b }}
+                </label>
+            </div>
+            
+            <!-- Option C -->
+            <div class="form-check mb-3">
+                <input type="radio" class="form-check-input" id="optionC" name="selected_option" value="C">
+                <label class="form-check-label" for="optionC" style="font-size: 1.2rem;">
+                    {{ question.option_c }}
+                </label>
+            </div>
+            
+            <!-- Option D -->
+            <div class="form-check mb-4">
+                <input type="radio" class="form-check-input" id="optionD" name="selected_option" value="D">
+                <label class="form-check-label" for="optionD" style="font-size: 1.2rem;">
+                    {{ question.option_d }}
+                </label>
+            </div>
+            
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-success btn-lg px-5">
+                Submit
+            </button>
+        </form>
+
+        <!-- Quit Button -->
+        <form method="GET" action="{% url 'quiz_summary' %}" class="mt-3">
+            <button type="submit" class="btn btn-danger btn-lg px-5">
+                Quit
+            </button>
+        </form>
+    </div>
+</div>
+
+<style>
+    body {
+        background-color: #f4f9fc;
+        font-family: 'Arial', sans-serif;
+    }
+
+    .quiz-container {
+        max-width: 600px;
+        margin: auto;
+        background: linear-gradient(135deg, #d7e8f7, #fff);
+        border: 2px solid #c9d6df;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+    }
+
+    h1 {
+        color: #4CAF50;
+        font-family: 'Arial Black', sans-serif;
+    }
+
+    .form-check-label {
+        color: #555;
+        transition: color 0.3s ease;
+    }
+
+    .form-check-input:checked + .form-check-label {
+        color: #4CAF50;
+        font-weight: bold;
+    }
+
+    .btn-success {
+        background-color: #4CAF50;
+        border: none;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-success:hover {
+        background-color: #45a049;
+        transform: translateY(-2px);
+    }
+
+    .btn-success:active {
+        transform: translateY(0);
+    }
+
+    .btn-danger {
+        background-color: #f44336;
+        border: none;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-danger:hover {
+        background-color: #e53935;
+        transform: translateY(-2px);
+    }
+
+    .btn-danger:active {
+        transform: translateY(0);
+    }
+</style>
+{% endblock content %}
